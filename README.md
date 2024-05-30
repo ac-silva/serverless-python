@@ -1,23 +1,28 @@
-### homework serverless with Python
+### Homework Serverless with Python
 
+#### Setup
 
-##### Setup
-  ```sh
+  start localstack
+  ```bash
+    docker-compose up
+  ```
+
+  create resources
+  ```bash
     sh ./script.sh
   ```
 
-  this file setup localstack to run lambdas
-
-  - create sqs queues
+  #### Resources
+  sqs queues
     - em-preparacao-pizzaria
     - pronto-pizzaria
 
-  - create dynamodb table
+  dynamodb table
     - pedidos-pizzaria
 
 #### Deploy
   run: 
-  ```sh
+  ```bash
     npm run deploy
   ```
 
