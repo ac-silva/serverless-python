@@ -26,7 +26,7 @@ functions:
             - prefix: pronto
 
   sqsPreparacaoHandler:
-    handler: handler.sqsHandler
+    handler: handler.sqsPreparacaoHandler
     events:
       - sqs:
           arn: arn:aws:sqs:us-east-1:117765426352:em-preparacao-pizzaria
@@ -34,7 +34,7 @@ functions:
           enabled: true
 
   sqsProntoHandler:
-    handler: handler.sqsHandler
+    handler: handler.sqsProntoHandler
     events:
       - sqs:
           arn: arn:aws:sqs:us-east-1:117765426352:pronto-pizzaria
