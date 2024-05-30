@@ -8,7 +8,6 @@ provider:
   runtime: python3.9
   memorySize: 128
   region: 'us-east-1'
-  timeout: 300
   environment:
     SQS_PREPARACAO_URL: http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/em-preparacao-pizzaria
     SQS_PRONTO_URL: http://sqs.us-east-1.localhost.localstack.cloud:4566/000000000000/pronto-pizzaria
