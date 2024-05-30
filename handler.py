@@ -18,19 +18,18 @@ def s3Handler(event, context):
     pedido = pedido_and_cliente[0]
     cliente = pedido_and_cliente[1]
 
-    message = str({
+    message = json.dumps({
         "pedido": pedido,
         "datetime": str(datetime.datetime.now().replace(microsecond=0).isoformat()) + "Z",
         "cliente": cliente,
         "status": status
     })
 
-    if (status == "preparacao"):
+    if (status == "em-preparacao"):
         sqsPreparacao.send(message)
     else:
         sqsPronto.send(message)
 
-    return event
 
 def sqsHandler(event, context):
     record = event['Records'][0]
@@ -38,4 +37,3 @@ def sqsHandler(event, context):
     table = boto3.resource('dynamodb').Table(os.environ.get('DYNAMODB_TABLE', ''))
     table.put_item(Item=message)
 
-    return event

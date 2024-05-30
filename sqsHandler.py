@@ -2,7 +2,7 @@ import boto3
 
 class SqsHandler:
     def __init__(self,queueUrl):
-        self.__sqs = boto3.client('sqs', endpoint_url='http://localhost:4566')
+        self.__sqs = boto3.client('sqs')
         self.__queueUrl = queueUrl
 
     def getMessage(self,qtdMsgs):
