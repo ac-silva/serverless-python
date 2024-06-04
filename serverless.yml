@@ -5,6 +5,8 @@ provider:
   runtime: python3.9
   memorySize: 128
   region: 'us-east-1'
+  iam:
+    role: !Sub arn:aws:iam::${AWS::AccountId}:role/LabRole
   environment:
     SQS_PREPARACAO_URL: !Sub http://sqs.${self:provider.region}.aws.amazon.com/${AWS::AccountId}/em-preparacao-pizzaria
     SQS_PRONTO_URL: !Sub http://sqs.${self:provider.region}.aws.amazon.com/${AWS::AccountId}/pronto-pizzaria
@@ -29,7 +31,7 @@ functions:
     handler: handler.sqsPreparacaoHandler
     events:
       - sqs:
-          arn: arn:aws:sqs:us-east-1:117765426352:em-preparacao-pizzaria
+          arn: arn:aws:sqs:us-east-1:077442555253:em-preparacao-pizzaria
           batchSize: 1
           enabled: true
 
@@ -37,7 +39,6 @@ functions:
     handler: handler.sqsProntoHandler
     events:
       - sqs:
-          arn: arn:aws:sqs:us-east-1:117765426352:pronto-pizzaria
+          arn: arn:aws:sqs:us-east-1:077442555253:pronto-pizzaria
           batchSize: 1
           enabled: true
-  
